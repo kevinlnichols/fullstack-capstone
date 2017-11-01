@@ -1,3 +1,10 @@
 language: node_js
 node_js: node
 before_script: chmod 0777 ./node_modules/.bin/mocha
+deploy:
+  provider: heroku
+  api_key:
+    secure: JV5BMoPgSTqQQkk4zu4mS6NMVhbnhStBP+uIGEeBZtMeLxr8Q0yUpzwEtmBNg0j2RiBnjp1J/6IAWzITjCNbqQ4U/3lxTuo1SJaXc9t59iO9xeyL1Rt0sQJZt0z8hhTPR50/DYUJeLLFYSUV/27QK+aAEicmx8IoE9EWTzRl6euhBCgRVZ2IxXDwh1OCr9qwGZ5rT615Ycr+fI52ELXApFD9nAO8aSdjR11EwmmAWzH0zQhGSxt8l4LAChUgKh9A0mIdhi1l9ld529LyTPJcgebd5PLOu6A65bGRg1ImI6L8ySl2+jrkojPeiJdSJu4ChjRUtP9OpMJ+SU2brKe8UAE7D5F0ByPx/wdArves+DTKsoiu7roa/9S/f4D5BO7D42u/71zAPv+hZP2qETUrl+wA8Glsjvq9nCrcI3y7iZN0O2zZQeUo0DWNB1Oc3GiifiMgg86OYQT1frbNND3O09wFwmmDqSkHO0GfYyTToeyD79+Vq1AU711DBLA2UbjnHZdXb2owxsik5OeaTnkzOeQff2+WIlpxKrfKH1nq00B5U/DjoaXwvYQPU1M39IJzyC2evDuJQn+z3i7QHm6o0P1h4VZjvzrUj7Xh9qBlsjm5rZ7Bqcj8eOFt5eQ2TiDphA6kPI8vGp7JBXtGg1Mm+3W0W5Hfydd2P9C8wd93oyM=
+  app: young-dawn-97345
+  on:
+    repo: kevinlnichols/fullstack-capstone
