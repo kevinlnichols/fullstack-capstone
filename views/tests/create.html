@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/index.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+    
+    <section class="create-test-page" id="create-test-page">
+        <button class="submitTest" id="submitTest">Submit Quiz</button>
+        <button class="addQuestion" id="addQuestion">Add Question</button>
+        <p>Enter a Title for Your Quiz in the Field Below:</p>
+        <div id="create-test-question-container">
+            <div class="create-test-question" id="create-test-question">
+                <div class="create-test-title" id="create-test-title">
+                    <input type="text" placeholder="Enter Question Here" value="" class="question" id="question">
+                </div>
+                <div class="create-test-answers">
+                    <input type="text" placeholder="Choice 1">
+                    <input type="text" placeholder="Choice 2">
+                    <input type="text" placeholder="Choice 3">
+                    <input type="text" placeholder="Choice 4">
+                    <input type="text" placeholder="Correct Answer Index">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/scripts/tests/create.js"></script>
+
+</body>
+</html>

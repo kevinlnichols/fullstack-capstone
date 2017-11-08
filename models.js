@@ -17,7 +17,13 @@ const userSchema = mongoose.Schema({
     type: {type: String, required: true}
 });
 
+userSchema.virtual('fullName').get(function() {
+    return `${this.name.firstName} ${this.name.lastName}`.trim()
+});
+
 const testSchema = mongoose.Schema({
+    testTitle: {type: String, required: true},
     question: {type: String, required: true},
     answer: {type: String, required: true},
+    testId: 
 });

@@ -2,6 +2,16 @@ var express = require('express');
 var app = express();
 app.use(express.static('public'));
 
+const testRouter = require('./views/tests/testsRouter');
+const userRouter = require('./views/users/usersRouter');
+const mainRouter = require('./public/mainRouter');
+const loginSignupRouter = require('./views/loginSignup/loginSignupRouter');
+
+app.use('/tests', testRouter);
+app.use('/users', userRouter);
+app.use('/main', mainRouter);
+app.use('/loginSignup', loginSignupRouter);
+
 let server;
 
 function runServer() {
