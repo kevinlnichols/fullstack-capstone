@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 const path = require('path');
+const jsonParser = bodyParser.json();
 
 router.get('/adminLogin', (req, res) => {
     res.sendFile(path.join(__dirname + '/adminLogin.html'));
@@ -16,6 +18,11 @@ router.get('/userLogin', (req, res) => {
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+router.post('/admin/create', jsonParser, (req, res) => {
+    console.log('receiving data');
+    console.log(req.body);
 });
 
 

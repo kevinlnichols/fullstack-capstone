@@ -5,12 +5,12 @@ app.use(express.static('public'));
 const testRouter = require('./views/tests/testsRouter');
 const userRouter = require('./views/users/usersRouter');
 const mainRouter = require('./public/mainRouter');
-const loginSignupRouter = require('./views/loginSignup/loginSignupRouter');
+const authenticationRouter = require('./views/authentication/authenticationRouter');
 
 app.use('/tests', testRouter);
 app.use('/users', userRouter);
 app.use('/main', mainRouter);
-app.use('/loginSignup', loginSignupRouter);
+app.use('/authentication', authenticationRouter);
 
 let server;
 
