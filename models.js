@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const mongoose = ('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     name: {
@@ -21,9 +21,21 @@ userSchema.virtual('fullName').get(function() {
     return `${this.name.firstName} ${this.name.lastName}`.trim()
 });
 
+userSchema.methods.apiRepr = function () {
+    return {
+        fullName: this.fullName,
+        username: this.username,
+        password: this.password
+    };
+}
+
 const testSchema = mongoose.Schema({
     testTitle: {type: String, required: true},
     question: {type: String, required: true},
     answer: {type: String, required: true},
-    testId: 
+
 });
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = {User};

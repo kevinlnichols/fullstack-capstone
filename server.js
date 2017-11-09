@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 app.use(express.static('public'));
+const mongoose = require('mongoose');
 
 const testRouter = require('./views/tests/testsRouter');
 const userRouter = require('./views/users/usersRouter');
@@ -17,11 +18,16 @@ let server;
 function runServer() {
   const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
-    server = app.listen(port, () => {
-      console.log(`Your app is listening on port ${port}`);
-      resolve(server);
-    }).on('error', err => {
-      reject(err)
+    mongoose.connect('mongodb://localhost/capstone', err => {
+      if (err) {
+        return reject(err);
+      };
+      server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
+        resolve(server);
+      }).on('error', err => {
+        reject(err)
+      });
     });
   });
 }
