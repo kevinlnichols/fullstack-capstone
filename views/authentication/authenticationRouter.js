@@ -17,6 +17,23 @@ router.get('/userLogin', (req, res) => {
     res.sendFile(path.join(__dirname + '/userLogin.html'));
 });
 
+/*router.post('/userLogin', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    user.findOne({username: username, password: password}, (err, user) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        else if (!user) {
+            return res.status(404).send();
+        }
+        else {
+            return res.status(200).send();
+        }
+    });
+});*/
+
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
