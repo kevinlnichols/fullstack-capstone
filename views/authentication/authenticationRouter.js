@@ -17,10 +17,28 @@ router.get('/userLogin', (req, res) => {
     res.sendFile(path.join(__dirname + '/userLogin.html'));
 });
 
-/*router.post('/userLogin', (req, res) => {
+User.create({
+    name: {
+        firstName: "John",
+        lastName: "Henry"
+    },
+    username: "blah",
+    password: "rah",
+    results: {
+        test: {
+            answerRight: [],
+            answerWrong: []
+        }
+    },
+    type: "user"
+});
+
+router.post('/userLogin', jsonParser, (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-    user.findOne({username: username, password: password}, (err, user) => {
+    console.log(username, password);
+    User.find({}, (err, user) => {
+        console.log(err, user);
         if (err) {
             console.log(err);
             return res.status(500).send();
@@ -32,7 +50,7 @@ router.get('/userLogin', (req, res) => {
             return res.status(200).send();
         }
     });
-});*/
+});
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
