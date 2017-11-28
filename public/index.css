@@ -1,5 +1,5 @@
 * {
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -32,6 +32,19 @@ a {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+.create-test-page > h1 {
+    color: #FFFAFA;
+    margin-bottom: 10px;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.create-test-page {
+    background: rgba(16, 19, 199, 0.75);
+    padding: 30px;
+    border-radius: 1px;
+    border: 2px solid black;
+}
+
 .main-button {
     border: 1px solid #181212;
     border-radius: 1px;
@@ -45,13 +58,6 @@ a {
     box-shadow: 2px 2px 2px;
 }
 
-button {
-    border-radius: 1px;
-    box-shadow: 1px 1px 1px;
-    margin: 4px;
-    padding: 4px;
-}
-
 .admin-options {
     margin-top: 200px;
     text-align: center;
@@ -62,12 +68,26 @@ button {
 }
 
 .admin-button {
-    border: 1px solid lightgray;
+    font-weight: bold;
+    border: 1px solid black;
     border-radius: 1px;
-    box-shadow: 1px 1px 1px;
-    margin: 4px;
-    padding: 6px;
-    position: relative;
+    width: 100%;
+    padding: 2px;
+    margin-top: 15px;
+    background-color: rgb(247, 240, 240);
+    text-decoration: none;
+}
+
+.add-question {
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 1px;
+    width: 100%;
+    padding: 2px;
+    margin-top: 10px;
+    background-color: rgb(247, 240, 240);
+    text-decoration: none;
+    box-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .admin-button:hover {
@@ -82,7 +102,7 @@ button {
     display: inline-block;
 }
 
-.admin-login-container, .signup-fields-container, .user-login-container {
+.admin-login-container, .signup-fields-container, .user-login-container, .user-data-container {
     margin-top: 100px;
     display: flex;
     flex-flow: column wrap;
@@ -91,4 +111,45 @@ button {
 
 .admin-login-fields > input, label {
     display: block;
+}
+
+.user-admin-submit-body {
+    background: #F1F1ED
+}
+
+.admin-login-fields, .admin-info, .user-login-fields {
+    padding: 40px;
+    border-radius: 3px;
+    background: rgb(22, 44, 170);
+}
+
+.admin-login-fields > label, .admin-info > label, .user-login-fields > label, .user-data-inputs > label {
+    color: #FFFAFA;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.input-border {
+    border: 1px solid black;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 2px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.question-spacer {
+    margin-bottom: 30px;
+}
+
+.quiz-title {
+    margin-bottom: 30px;
+}
+
+.create-test-page {
+    width: 40%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }

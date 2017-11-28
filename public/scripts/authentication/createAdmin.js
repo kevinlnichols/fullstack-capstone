@@ -11,6 +11,9 @@ $('.admin-info').submit((event) => {
         url: '/authentication/admin/create',
         type: 'post',
         data: JSON.stringify(data),
-        contentType: 'application/json'
+        contentType: 'application/json',
+        success: function() {
+            window.location.href = '/tests';      
+        }
     });
 });

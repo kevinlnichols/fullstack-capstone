@@ -14,7 +14,15 @@ $('.user-login-fields').submit((event) => {
             method: 'POST',
             data: JSON.stringify(userData),
             dataType: 'json',
-            contentType: 'application/json'
+            contentType: 'application/json',
+            success: loginVerified
         });
     }
 });
+
+const loginVerified = data => {
+    console.log('Loading');
+    if (data.token) {
+        window.location.href = '/users/home';
+    };
+};
