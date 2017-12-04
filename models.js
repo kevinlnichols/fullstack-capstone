@@ -54,6 +54,14 @@ const questionSchema = mongoose.Schema({
     correctAnswer: {type: String, required: true}
 });
 
+questionSchema.methods.apiRepr = function () {
+    return {
+        id: this._id,
+        answerChoices: this.answerChoices,
+        correctAnswer: this.correctAnswer
+    };
+};
+
 const testSchema = mongoose.Schema({
     testTitle: {type: String, required: true},
     questions: [
@@ -65,6 +73,7 @@ const testSchema = mongoose.Schema({
 
 testSchema.methods.apiRepr = function () {
     return {
+        _id: this._id,
         testTitle: this.testTitle,
         questions: this.questions
     };

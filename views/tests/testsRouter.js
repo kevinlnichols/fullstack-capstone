@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const {Test} = require('./../../models');
+const {Question} = require('./../../models');
+const _ = require('lodash');
 
 router.get('/create', (req, res) => {
     res.sendFile(path.join(__dirname + '/create.html'));
@@ -21,13 +23,34 @@ router.get('/adminHome', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-//GET to view tests
+//GET to view tests in dropdown menu
 router.get('/list', (req, res) => {
     return Test.find()
         .then(tests => {
             res.json(tests.map(test => {
                 return test.apiRepr();
             }));
+        })
+})
+
+//DELETE to delete question
+router.delete('/list/delete/:testid/:questionid', (req, res) => {
+    Test.findOne({_id: req.params.testid})
+    .then(test => {
+        let currentTest = test.apiRepr();
+        _.remove(currentTest.questions, {
+            _id: req.params.questionid
+        });
+        res.json(currentTest);
+    });
+});
+
+ //GET to view individual tests after selection from dropdown 
+router.get('/list/:id', (req, res) => {
+    let id = req.params.id;
+    return Test.findOne({_id: id})
+        .then(test => {
+            res.json(test.apiRepr());
         })
 })
 

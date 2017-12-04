@@ -1,0 +1,29 @@
+const viewUsers = () => { 
+    $.ajax({
+        url: '/users/list',
+        type: 'get',
+        contentType: 'application/json',
+        success: renderUserTable
+    });
+};
+
+const renderUserTable = (data) => {
+    let users = '';
+    data.sort();
+    for (i=0; i < data.length; i++) {
+        users += `
+        <tr>
+            <td>${data[i].fullName}</td>
+            <td>100%</td>
+        </tr>`;
+    };
+    
+    $('.user-table').append(users);
+    console.log(data);    
+}
+
+function handleFunctions () {
+    viewUsers();
+};
+
+$(handleFunctions);

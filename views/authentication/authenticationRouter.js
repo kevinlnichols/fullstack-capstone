@@ -18,38 +18,6 @@ router.get('/userLogin', (req, res) => {
     res.sendFile(path.join(__dirname + '/userLogin.html'));
 });
 
-User.create({
-    name: {
-        firstName: "John",
-        lastName: "Henry"
-    },
-    username: "blah",
-    password: "rah",
-    results: {
-        test: {
-            answerRight: [],
-            answerWrong: []
-        }
-    },
-    type: "user"
-});
-
-User.create({
-    name: {
-        firstName: "Jane",
-        lastName: "Doe"
-    },
-    username: "jdoe",
-    password: "password",
-    results: {
-        test: {
-            answerRight: [],
-            answerWrong: []
-        }
-    },
-    type: "admin"
-});
-
 let adminToken = '1234';
 
 router.post('/adminLogin', jsonParser, (req, res) => {

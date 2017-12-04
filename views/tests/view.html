@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="/index.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
-<body>
+<body class="view-test-body">
     
     <section class="test-list-page" id="test-list-page">
-        <p>test list page</p>
-        <select name="view" id="dropdown-menu">
-            <option value="">View Tests</option>
-        </select>
+        <div class="dropdown">
+            <select class="dropdown-select" name="view" id="dropdown-menu">
+                <option class="dropdown-menu" value=""disabled selected hidden>View Tests</option>
+            </select>
+        </div>
+        <div class="view-test-title">
+            
+        </div>
         <div class="view-test">
 
         </div>
