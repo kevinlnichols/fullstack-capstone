@@ -219,4 +219,15 @@ a {
     width: 100%;
 }
 
+/* User homepage styling */
+
+.user-home-page {
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.user-pic {
+    height: 100px;
+    width: 100px;
+}
 

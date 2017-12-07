@@ -4,7 +4,18 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const jsonParser = bodyParser.json();
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
 const {User} = require('./../../models');
+const config = require('./../../config');
+const passportLocal = require('passport-local');
+
+const createAuthToken = user => {
+    return jwt.sign({user}, config.JWT_SECRET, {
+      subject: user.username,
+      expiresIn: config.JWT_EXPIRY,
+      algorithm: 'HS256'
+    });
+  };
 
 router.get('/adminLogin', (req, res) => {
     res.sendFile(path.join(__dirname + '/adminLogin.html'));
@@ -17,6 +28,7 @@ router.get('/adminSignup', (req, res) => {
 router.get('/userLogin', (req, res) => {
     res.sendFile(path.join(__dirname + '/userLogin.html'));
 });
+
 
 let adminToken = '1234';
 
@@ -40,8 +52,11 @@ router.post('/adminLogin', jsonParser, (req, res) => {
 });
 
 let token = "abcd";
+const localAuth = passport.authenticate('local', {session: false});
+router.use(bodyParser.json());
 
-router.post('/userLogin', jsonParser, (req, res) => {
+router.post('/userLogin', localAuth, (req, res) => {
+    const authToken = createAuthToken(req.user.serialize());
     let username = req.body.username;
     let password = req.body.password;
     console.log(username, password);
@@ -52,10 +67,14 @@ router.post('/userLogin', jsonParser, (req, res) => {
             return res.status(500).send();
         }
         else if (!user) {
+            console.log("blah");
             return res.status(404).send();
         }
         else {
-            return res.status(200).json({token: token});
+            return res.status(200).json({
+                authToken,
+                userId: user._id
+            });
         }
     });
 });

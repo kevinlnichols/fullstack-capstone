@@ -20,9 +20,14 @@ $('.user-login-fields').submit((event) => {
     }
 });
 
+
+
 const loginVerified = data => {
-    console.log('Loading');
-    if (data.token) {
+    console.log(data);
+    if (data.authToken) {
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data.userId);
+       console.log('blah');
         window.location.href = '/users/home';
-    };
+   };
 };

@@ -33,10 +33,12 @@ const userRouter = require('./views/users/usersRouter');
 const mainRouter = require('./public/mainRouter');
 const authenticationRouter = require('./views/authentication/authenticationRouter');
 
+
 app.use('/tests', testRouter);
 app.use('/users', userRouter);
 app.use('/main', mainRouter);
 app.use('/authentication', authenticationRouter);
+
 
 app.get(
   '/api/protected',
