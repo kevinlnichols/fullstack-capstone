@@ -9,7 +9,7 @@ const storage = server.storage;
 
 chai.use(chaiHttp);
 
-const {app, runServer, closeServer} = require('../server');
+const {router, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 const {User, Test, Question} = require('../models'); 
 
@@ -89,18 +89,40 @@ describe('user API resource', function() {
     describe('GET endpoint', function() {
         it('should return all existing users', function() {
             let res;
-            return chai.request(app)
-            .get('/list')
-            .then(_res => {
-                res = _res;
-                res.should.have.status(200);
-                res.body.should.have.length.of.at.least(1);
-                return User.count();
-            })
-            .then(count => {
-                res.body.should.have.length.of(count);
-            });
+            return chai.request(router)
+                .get('/list')
+                .then(_res => {
+                    res = _res;
+                    res.should.have.status(200);
+                    res.body.should.have.length.of.at.least(1);
+                    return User.count();
+                })
+                .then(count => {
+                    res.body.should.have.length.of(count);
+                });
         });
+        it('should return users with the right fields', function() {
+            let resPost;
+            return chai.request(router)
+                .get('/list')
+                .then(res => {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                    res.body.should.have.length.of.at.least(1);
+                    res.body.forEach(function(user) {
+                        user.should.be.a('object');
+                        user.should.include.keys('id', 'name', 'username', 'password', 'type');
+                    });
+                    resPost = res.body[0];
+                    return User.findById(resPost.id);
+                })
+                .then(user => {
+                    resPost.name.should.equal(user.name);
+                    resPost.username.should.equal(user.username);
+                    resPost.password.should.equal(user.password);
+                    resPost.type.should.equal(user.type);
+                })
+        })
     });
     
 });
