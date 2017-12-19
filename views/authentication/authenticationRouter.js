@@ -7,7 +7,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const {User} = require('./../../models');
 const config = require('./../../config');
-const passportLocal = require('passport-local');
+const passportLocal = require('passport-local').Strategy;
 
 const createAuthToken = user => {
     return jwt.sign({user}, config.JWT_SECRET, {
@@ -52,7 +52,29 @@ router.post('/adminLogin', jsonParser, (req, res) => {
 });
 
 let token = "abcd";
-const localAuth = passport.authenticate('local', {session: false});
+router.post('/userLogin', jsonParser, (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    console.log(username, password);
+    User.findOne({username: username, password: password, type: 'user'}, (err, user) => {
+        console.log(err, user);
+        if (err) {
+            console.log(err);
+            return res.status(500).send();
+        }
+        else if (!user) {
+            console.log("blah");
+            return res.status(404).send();
+        }
+        else {
+            return res.status(200).json({
+                token: token,
+                userId: user._id
+            });
+        }
+    });
+});
+/*const localAuth = passport.authenticate('local', {session: false});
 router.use(bodyParser.json());
 
 router.post('/userLogin', localAuth, (req, res) => {
@@ -77,7 +99,7 @@ router.post('/userLogin', localAuth, (req, res) => {
             });
         }
     });
-});
+});*/
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));

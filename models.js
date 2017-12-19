@@ -11,16 +11,16 @@ const userSchema = mongoose.Schema({
     },
     username: {type: String, required: true},
     password: {type: String, required: true},
-    results: {
-        test: {
-            answerRight: {type: Array},
-            answerWrong: {type: Array}
-        }
-    },
+    results: {type: Object},
     type: {type: String, required: true}
 },
     {collection: 'user'}
 );
+
+/*
+{testId: hhhg778374844, answersWrong: 3. asnserCorrect: 11}
+
+user.results.push(testid, correctAnswe, wrong)*/ 
 
 
 
@@ -32,7 +32,8 @@ userSchema.methods.apiRepr = function () {
     return {
         _id: this._id,
         fullName: this.fullName || '',
-        username: this.username || ''
+        username: this.username || '',
+        results: this.results
     };
 };
 

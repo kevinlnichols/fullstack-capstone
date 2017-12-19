@@ -1,8 +1,6 @@
-console.log('create js file');
-
 $('.user-data-inputs').submit((event) => {
     event.preventDefault();
-    console.log('sending data');
+
     let data = {
         firstName: $('.user-first-name').val(),
         lastName: $('.user-last-name').val(),

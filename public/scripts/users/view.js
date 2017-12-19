@@ -12,7 +12,7 @@ const renderUserTable = (data) => {
     data.sort();
     for (i=0; i < data.length; i++) {
         users += `
-        <tr>
+        <tr class="user-test-info">
             <td>${data[i].fullName}</td>
             <td>100%</td>
         </tr>`;

@@ -65,7 +65,7 @@ const submitTest = () => {
             data: JSON.stringify(testData),
             contentType: 'application/json',
             success: function() {
-                //window.location.href = '/tests';      
+                window.location.href = '/tests';      
             }
         });
     });

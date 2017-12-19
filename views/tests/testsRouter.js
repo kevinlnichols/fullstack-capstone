@@ -23,6 +23,12 @@ router.get('/adminHome', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 
+
+//GET to load user homepage and view user info
+router.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname + '/test.html'))
+})
+
 //GET to view tests in dropdown menu
 router.get('/list', (req, res) => {
     return Test.find()
@@ -37,16 +43,45 @@ router.get('/list', (req, res) => {
 router.delete('/list/delete/:testid/:questionid', (req, res) => {
     Test.findOne({_id: req.params.testid})
     .then(test => {
-        let currentTest = test.apiRepr();
-        _.remove(currentTest.questions, {
-            _id: req.params.questionid
+        let index;
+        test.questions.forEach((question, questionIndex) => {
+            if (question._id == req.params.questionid) {
+                index = questionIndex
+            }
         });
-        res.json(currentTest);
+        test.questions.splice(index, 1);
+        test.save();
+        res.json(test.apiRepr());
     });
+});
+
+//DELETE to delete test
+router.delete('/list/delete/:testid', (req, res) => {
+    console.log(req.params.testid);
+    Test.findByIdAndRemove(req.params.testid, function (err, test) {
+        const response = {
+            message: "Successfully deleted",
+            id: req.testid
+        };
+        if (err) {
+            'Something went horribly wrong!'
+        } else {
+            res.send(response);
+        }
+    })
 });
 
  //GET to view individual tests after selection from dropdown 
 router.get('/list/:id', (req, res) => {
+    let id = req.params.id;
+    return Test.findOne({_id: id})
+        .then(test => {
+            res.json(test.apiRepr());
+        })
+})
+
+//Get for user to take a test
+router.get('/test/:id', (req, res) => {
     let id = req.params.id;
     return Test.findOne({_id: id})
         .then(test => {
