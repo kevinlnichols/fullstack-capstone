@@ -26,14 +26,14 @@ const render = testData => {
             <div class="create-test-question">
                 <div class="create-test-title">
                     <p>Question ${index}</p>
-                    <input disabled class="input-border" type="text" placeholder="Enter Question Here" class="testTitle" id="testTitle" value="${question.title}">
+                    <input disabled aria-label="question" class="input-border" type="text" placeholder="Enter Question Here" class="testTitle" id="testTitle" value="${question.title}">
                 </div>
                 <div class="create-test-answers">
-                    <input disabled class="input-border" type="text" placeholder="Choice 1" value="${question.answerChoices.choice1}">
-                    <input disabled class="input-border" type="text" placeholder="Choice 2" value="${question.answerChoices.choice2}">
-                    <input disabled class="input-border" type="text" placeholder="Choice 3" value="${question.answerChoices.choice3}">
-                    <input disabled class="input-border" type="text" placeholder="Choice 4" value="${question.answerChoices.choice4}">
-                    <input disabled class="input-border question-spacer" type="text" placeholder="Correct Answer" value="${question.correctAnswer}">
+                    <input disabled aria-label="create choice 1" class="input-border" type="text" placeholder="Choice 1" value="${question.answerChoices.choice1}">
+                    <input disabled aria-label="create choice 2" class="input-border" type="text" placeholder="Choice 2" value="${question.answerChoices.choice2}">
+                    <input disabled aria-label="create choice 3" class="input-border" type="text" placeholder="Choice 3" value="${question.answerChoices.choice3}">
+                    <input disabled aria-label="create choice 4" class="input-border" type="text" placeholder="Choice 4" value="${question.answerChoices.choice4}">
+                    <input disabled aria-label="correct choice" class="input-border question-spacer" type="text" placeholder="Correct Answer" value="${question.correctAnswer}">
                 </div>
             </div>`);
     });

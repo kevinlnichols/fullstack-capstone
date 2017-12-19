@@ -7,7 +7,7 @@ const viewTests = () => {
                 let options = '';
                 for (i=0; i < data.length; i++) {
                     console.log(data[i]);
-                    options += `<option value="${data[i]._id}">${data[i].testTitle}</option>`;
+                    options += `<option aria-label="${data[i].testTitle}" value="${data[i]._id}">${data[i].testTitle}</option>`;
                 };
                 $('#dropdown-menu').append(options);
                 viewTestDetails();

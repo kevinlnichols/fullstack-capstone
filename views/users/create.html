@@ -14,14 +14,14 @@
         <div class="user-data-container" id="user-data-container">
             <div class="user-data">
                 <form class="user-data-inputs">
-                    <label for="first-name">First Name: </label>
-                    <input class="user-first-name input-border" type="text">
-                    <label for="last-name">Last Name: </label>
-                    <input class="user-last-name input-border" type="text">
-                    <label for="id">User ID: </label>
-                    <input class="user-id input-border" type="text">
-                    <label for="password">User Password: </label>
-                    <input class="user-password input-border" type="text">
+                    <label for="first-name" id="first-name">First Name: </label>
+                    <input aria-labelledby="first-name" class="user-first-name input-border" type="text">
+                    <label for="last-name" id="last-name">Last Name: </label>
+                    <input aria-labelledby="last-name" class="user-last-name input-border" type="text">
+                    <label for="id" id="user-id">User ID: </label>
+                    <input aria-labelledby="user-id" class="user-id input-border" type="text">
+                    <label for="password" id="user-password">User Password: </label>
+                    <input aria-labelledby="user-password" class="user-password input-border" type="text">
                     <button class="admin-button" id="user-photo-button" type="button">Add Photo</button>
                     <button class="admin-button" id="submit-user-button" type="submit">Submit User Data</button>
                 </form>

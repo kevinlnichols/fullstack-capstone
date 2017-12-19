@@ -32,7 +32,7 @@ const renderTestData = data => {
     for (i=0; i < data.length; i++) {
         tests += `
         <tr class="user-test-info">
-            <td class="test-id" testid="${data[i]._id}" id="take-test">${data[i].testTitle}</td>
+            <td class="test-id" testid="${data[i]._id}">${data[i].testTitle}</td>
             <td>Not Completed%</td>
         </tr>`;
     };

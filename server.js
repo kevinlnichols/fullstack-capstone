@@ -60,6 +60,7 @@ function runServer() {
   const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
     mongoose.connect('mongodb://localhost/capstone', err => {
+      useMongoClient: true;
       if (err) {
         return reject(err);
       };

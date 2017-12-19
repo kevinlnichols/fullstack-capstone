@@ -15,14 +15,14 @@ const renderTestData = (data) => {
         let choicesGroup = '';
         for(choice in choices) {
             console.log(choices[choice]);
-            choicesGroup += `<option>${choices[choice]}</option>` 
+            choicesGroup += `<option aria-label="${choices[choice]}">${choices[choice]}</option>` 
         }
         return choicesGroup;
     };   
     let question = (question, index) => `
         <div class="test-question">
             <h3>${question.title}</h3>
-            <select class="question-select" data-id="${index}">${choices(question.answerChoices)}</select>
+            <select class="question-select" data-id="${index}" aria-label="Answer Select Dropdown">${choices(question.answerChoices)}</select>
         </div>
     `;
     let questionsGroup = '';
@@ -30,7 +30,7 @@ const renderTestData = (data) => {
         questionsGroup += question(item, index);
     });
     $('.take-test-questions-form').append(questionsGroup);
-    $('.take-test-questions-form').append(`<button class="submit-test-button">Submit Answers</button>`);
+    $('.take-test-questions-form').append(`<button class="submit-test-button" aria-label="Submit">Submit Answers</button>`);
     submitTest(data);
 };
 
