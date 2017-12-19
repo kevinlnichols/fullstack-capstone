@@ -86,5 +86,21 @@ describe('user API resource', function() {
     return closeServer();
     });
 
+    describe('GET endpoint', function() {
+        it('should return all existing users', function() {
+            let res;
+            return chai.request(app)
+            .get('/list')
+            .then(_res => {
+                res = _res;
+                res.should.have.status(200);
+                res.body.should.have.length.of.at.least(1);
+                return User.count();
+            })
+            .then(count => {
+                res.body.should.have.length.of(count);
+            });
+        });
+    });
     
 });
