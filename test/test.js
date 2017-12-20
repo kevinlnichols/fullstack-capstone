@@ -124,5 +124,86 @@ describe('user API resource', function() {
                 })
         })
     });
+
+    describe('POST endpoint', function() {
+        it('should add a new user', function() {
+            const newUser = {
+                name: {
+                    firstName: faker.name.firstName(),
+                    lastName: fake.name.lastName()
+                },
+                username: faker.lorem.userName(),
+                password: faker.lorem.text(),
+                type: faker.lorem.words() 
+            };
+            return chai.request(router)
+                .post('/users/create')
+                .send(newUser)
+                .then(function(res) {
+                    res.should.have.status(201);
+                    res.should.have.json;
+                    res.body.should.be.a('object');
+                    res.body.should.include.keys('id', 'name', 'username', 'password', 'type');
+                    res.body.name.should.equal(newUser.name);
+                    res.body.id.should.not.be.null;
+                    res.body.username.should.equal(newUser.username);
+                    res.body.password.should.equal(newUser.password);
+                    res.body.type.should.equal(newUser.type);
+                    return User.findById(res.body.id);
+                })
+                .then(function(user) {
+                    user.body.name.should.equal(newUser.name);
+                    user.body.username.should.equal(newUser.username);
+                    user.body.password.should.equal(newUser.password);
+                    user.body.type.should.equal(newUser.type);
+                });
+        });
+    });
+
+    describe('PUT endpoint', function () {
+        it('should update user with test results', function () {
+            const updateData = {
+                results: {
+                    answerRight: 2,
+                    answerWrong: 3
+                }
+            };
+            return UserS
+            .findOne()
+            .then(user => {
+                updateData.id = user.id;
+                return chai.request(router)
+                .put('/result')
+                .send(updateData);
+            })
+            .then(res => {
+                res.should.have.status(204);
+                return User.findById(updateData.id);
+            })
+            .then(user => {
+                user.results.answerRight.should.equal(updateData.results.answerRight);
+                user.results.answerWrong.should.equal(updateData.results.answerWrong);
+            });
+        });
+    });
+
+    describe('DELETE endpoint', function () {
+        it('should delete a test by id', function () {
+          let test;
+          return Test
+            .findOne()
+            .then(_test => {
+              test = _test;
+              return chai.request(router).delete('/list/delete/:testid');
+            })
+            .then(res => {
+              res.should.have.status(204);
+              return Test.findById(test.id);
+            })
+            .then(_test => {
+              should.not.exist(_test);
+            });
+        });
+      });
     
 });
