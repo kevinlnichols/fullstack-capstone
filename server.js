@@ -59,7 +59,7 @@ let server;
 function runServer() {
   const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
-    mongoose.connect('mongodb://localhost/capstone', err => {
+    mongoose.connect(DATABASE_URL, err => {
       useMongoClient: true;
       if (err) {
         return reject(err);
@@ -68,6 +68,7 @@ function runServer() {
         console.log(`Your app is listening on port ${port}`);
         resolve(server);
       }).on('error', err => {
+        mongoose.disconnect();
         reject(err)
       });
     });
@@ -75,14 +76,16 @@ function runServer() {
 }
 
 function closeServer() {
-  return new Promise((resolve, reject) => {
-    console.log('Closing server');
-    server.close(err => {
-      if (err) {
-        reject(err);
-        return;
-      }
-      resolve();
+  return mongoose.disconnect().then(() => {
+    return new Promise((resolve, reject) => {
+      console.log('Closing server');
+      server.close(err => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve();
+      });
     });
   });
 }

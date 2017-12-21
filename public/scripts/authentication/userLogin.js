@@ -8,7 +8,7 @@ $('.user-login-fields').submit((event) => {
     } else if (password === '') {
         $('.user-password').notify('Please fill out this field');
     } else {console.log('sending user data');
-        let userData = { username: username, password: password};
+        let userData = {username: username, password: password};
         $.ajax({
             url: '/authentication/userLogin',
             method: 'POST',

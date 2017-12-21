@@ -55,8 +55,7 @@ let token = "abcd";
 router.post('/userLogin', jsonParser, (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-    console.log(username, password);
-    User.findOne({username: username, password: password, type: 'user'}, (err, user) => {
+    User.findOne({username: username, type: 'user'}, (err, user) => {
         console.log(err, user);
         if (err) {
             console.log(err);
@@ -64,6 +63,9 @@ router.post('/userLogin', jsonParser, (req, res) => {
         }
         else if (!user) {
             console.log("blah");
+            return res.status(404).send();
+        }
+        else if (!user.validatePassword(password)) {
             return res.status(404).send();
         }
         else {
@@ -74,32 +76,6 @@ router.post('/userLogin', jsonParser, (req, res) => {
         }
     });
 });
-/*const localAuth = passport.authenticate('local', {session: false});
-router.use(bodyParser.json());
-
-router.post('/userLogin', localAuth, (req, res) => {
-    const authToken = createAuthToken(req.user.serialize());
-    let username = req.body.username;
-    let password = req.body.password;
-    console.log(username, password);
-    User.findOne({username: username, password: password, type: 'user'}, (err, user) => {
-        console.log(err, user);
-        if (err) {
-            console.log(err);
-            return res.status(500).send();
-        }
-        else if (!user) {
-            console.log("blah");
-            return res.status(404).send();
-        }
-        else {
-            return res.status(200).json({
-                authToken,
-                userId: user._id
-            });
-        }
-    });
-});*/
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));

@@ -5,6 +5,7 @@ const router = express.Router();
 const path = require('path');
 const {User} = require('./../../models');
 const {Test} = require('./../../models');
+const logout = require('express-passport-logout');
 
 router.get('/create', (req, res) => {
     res.sendFile(path.join(__dirname + '/create.html'));
@@ -56,7 +57,7 @@ router.put('/results', jsonParser, (req, res) => {
     }
     User.findById(req.body.userId)
         .then(user => {
-            let results = user.apiRepr();
+            let currentUser = user.apiRepr();
             console.log(req.body.testId);
             console.log(user.results);
             //user.results = user.results ? user.results : {};
@@ -64,8 +65,14 @@ router.put('/results', jsonParser, (req, res) => {
                 answerRight: req.body.answerRight,
                 answerWrong: req.body.answerWrong
             }
-            results[req.body.testId] = test;
-            user.results = results;
+            console.log(currentUser.results);
+            currentUser.results = currentUser.results ? currentUser.results : {};
+            console.log(currentUser.results);
+            console.log(req.body.testId);
+            currentUser.results[req.body.testId] = test;
+            console.log(currentUser.results);
+            user.results = currentUser.results;
+            console.log(user.results);
             user.save()
             .then(user => {
                 res.status(200).json(user);
@@ -75,6 +82,8 @@ router.put('/results', jsonParser, (req, res) => {
     
     
 })
+
+router.get('/userLogout', logout());
 
 
 module.exports = router;

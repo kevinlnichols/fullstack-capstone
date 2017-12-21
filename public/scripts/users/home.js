@@ -13,8 +13,14 @@ const renderUserHome = () => {
 };
 
 const renderUserData = data => {
+    let logout = `
+        <form class="user-logout" role="form" >
+            <input type="submit" value="Logout" id="logout" class="logout-button">
+        </form>`;
     let name = `<h1 class="user-welcome">Hello ${data.fullName}</h1>`;
+    $('.user-header').html(logout);
     $('.user-name').html(name);
+    userLogout();
 };
 
 const renderTests = () => {
@@ -44,6 +50,15 @@ const renderTestData = data => {
         window.location.href='/tests/test/';
     }); 
 };
+
+const userLogout = () => {
+    $('.user-logout').on('submit', function(event) {
+        event.preventDefault();
+        console.log('Logging out');
+        localStorage.clear();
+        window.location.href='/authentication';
+    });
+}
 
 
 
