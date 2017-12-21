@@ -31,8 +31,8 @@ function seedUserData() {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName()
         },
-        username: faker.lorem.userName(),
-        password: faker.lorem.text(),
+        username: faker.internet.userName(),
+        password: faker.lorem.words(),
         type: faker.lorem.words()
       });
     }
@@ -132,8 +132,8 @@ describe('user API resource', function() {
                     firstName: faker.name.firstName(),
                     lastName: fake.name.lastName()
                 },
-                username: faker.lorem.userName(),
-                password: faker.lorem.text(),
+                username: faker.internet.userName(),
+                password: faker.lorem.words(),
                 type: faker.lorem.words() 
             };
             return chai.request(router)
