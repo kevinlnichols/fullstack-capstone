@@ -89,7 +89,7 @@ describe('user API resource', function() {
     describe('GET endpoint', function() {
         it('should return all existing users', function() {
             let res;
-            return chai.request(router)
+            return chai.request(app)
                 .get('/list')
                 .then(_res => {
                     res = _res;
@@ -103,7 +103,7 @@ describe('user API resource', function() {
         });
         it('should return users with the right fields', function() {
             let resPost;
-            return chai.request(router)
+            return chai.request(app)
                 .get('/list')
                 .then(res => {
                     res.should.have.status(200);
@@ -136,7 +136,7 @@ describe('user API resource', function() {
                 password: faker.lorem.words(),
                 type: faker.lorem.words() 
             };
-            return chai.request(router)
+            return chai.request(app)
                 .post('/users/create')
                 .send(newUser)
                 .then(function(res) {
@@ -172,7 +172,7 @@ describe('user API resource', function() {
             .findOne()
             .then(user => {
                 updateData.id = user.id;
-                return chai.request(router)
+                return chai.request(app)
                 .put('/result')
                 .send(updateData);
             })
@@ -194,7 +194,7 @@ describe('user API resource', function() {
             .findOne()
             .then(_test => {
               test = _test;
-              return chai.request(router).delete('/list/delete/:testid');
+              return chai.request(app).delete('/list/delete/:testid');
             })
             .then(res => {
               res.should.have.status(204);
