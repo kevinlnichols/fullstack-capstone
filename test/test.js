@@ -9,7 +9,7 @@ const storage = server.storage;
 
 chai.use(chaiHttp);
 
-const {router, runServer, closeServer} = require('../server');
+const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 const {User, Test, Question} = require('../models'); 
 
@@ -130,7 +130,7 @@ describe('user API resource', function() {
             const newUser = {
                 name: {
                     firstName: faker.name.firstName(),
-                    lastName: fake.name.lastName()
+                    lastName: faker.name.lastName()
                 },
                 username: faker.internet.userName(),
                 password: faker.lorem.words(),
@@ -168,7 +168,7 @@ describe('user API resource', function() {
                     answerWrong: 3
                 }
             };
-            return UserS
+            return User
             .findOne()
             .then(user => {
                 updateData.id = user.id;
