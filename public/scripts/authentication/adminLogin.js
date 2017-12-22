@@ -23,6 +23,8 @@ $('.admin-login-fields').submit((event) => {
 const loginVerified = data => {
     console.log('Loading');
     if (data.token) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('adminId', data.adminId);
         window.location.href = '/tests';
     };
 };

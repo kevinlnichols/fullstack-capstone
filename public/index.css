@@ -20,6 +20,19 @@ body {
     margin-right: auto;
 }
 
+.logout-button {
+    border: 1px solid #0C0C0C;
+    border-radius: 1px;
+    padding: 5px;
+    background-color: #F8F8FF;
+    text-decoration: none;
+}
+
+.logout-button:hover {
+    box-shadow: 2px 2px 2px;
+}
+
+
 a {
     color: black;
     text-decoration: none;
@@ -67,7 +80,7 @@ a {
 }
 
 .admin-options {
-    margin-top: 200px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -395,6 +408,10 @@ a {
     background-size: cover;
 }
 
+.take-test-questions-form {
+    text-align: center;
+}
+
 .take-test-page {
     margin-top: 100px;
     margin-left: 60px;
@@ -427,6 +444,8 @@ a {
 }
 
 .submit-test-button {
+    margin-left: auto;
+    margin-right: auto;
     font-weight: bold;
     border: 1px solid black;
     border-radius: 1px;
@@ -434,10 +453,22 @@ a {
     padding: 2px;
     background-color: rgb(247, 240, 240);
     text-decoration: none;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
 }
 
-
+.admin-welcome {
+    font-size: 18px;
+    color: #FFFAFA;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    background-color: rgba(61, 58, 58, 0.5);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 50px;
+    width: 50%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
 
 

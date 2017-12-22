@@ -36,7 +36,7 @@ router.post('/adminLogin', jsonParser, (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     console.log(username, password);
-    User.findOne({username: username, password: password, type: 'admin'}, (err, user) => {
+    User.findOne({username: username, type: 'admin'}, (err, user) => {
         console.log(err, user);
         if (err) {
             console.log(err);
@@ -45,8 +45,14 @@ router.post('/adminLogin', jsonParser, (req, res) => {
         else if (!user) {
             return res.status(404).send();
         }
+        else if (!user.validatePassword(password)) {
+            return res.status(404).send();
+        }
         else {
-            return res.status(200).json({token: adminToken});
+            return res.status(200).json({
+                token: adminToken,
+                adminId: user._id
+            });
         }
     });
 });

@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const {Test} = require('./../../models');
+const {User} = require('./../../models');
 const {Question} = require('./../../models');
 const _ = require('lodash');
 
@@ -87,6 +88,19 @@ router.get('/test/:id', (req, res) => {
         .then(test => {
             res.json(test.apiRepr());
         })
+})
+
+//Get info for single admin
+router.get('/admin/:id', (req, res) => {
+    if (req.headers.token === '1234') {
+        return User.findOne({_id: req.params.id})
+        .then(user => {
+            res.json(user.apiRepr());
+        });
+    } else {
+        res.json('Forbidden');
+    }
+
 })
 
 //POST to create new test
