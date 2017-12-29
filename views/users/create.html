@@ -19,10 +19,11 @@
                     <label for="last-name" id="last-name">Last Name: </label>
                     <input aria-labelledby="last-name" class="user-last-name input-border" type="text">
                     <label for="id" id="user-id">User ID: </label>
-                    <input aria-labelledby="user-id" class="user-id input-border" type="text">
-                    <label for="password" id="user-password">User Password: </label>
-                    <input aria-labelledby="user-password" class="user-password input-border" type="text">
-                    <button class="admin-button" id="user-photo-button" type="button">Add Photo</button>
+                    <input aria-labelledby="user-id" class="user-id input-border" type="text" required>
+                    <label for="password" id="user-password">User Password: <span id="length-error"></span></label>
+                    <input aria-labelledby="user-password" class="user-password input-border" type="password" required>
+                    <label for="retype-password">Retype Password: <span id="match-error"></span></label>
+                    <input aria-labelledby="retype-password" type="password" class="input-border" name="retype-password" id="retype-password" required>
                     <button class="admin-button" id="submit-user-button" type="submit">Submit User Data</button>
                 </form>
             </div>

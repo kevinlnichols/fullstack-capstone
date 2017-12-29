@@ -18,7 +18,7 @@ router.get('/view', (req, res) => {
 
 //GET to view users
 router.get('/list', (req, res) => {
-    return User.find()
+    return User.find({type: 'user'})
         .then(users => {
             res.json(users.map(user => {
                 return user.apiRepr();
@@ -41,7 +41,33 @@ router.get('/list/:id', (req, res) => {
     } else {
         res.json('Forbidden');
     }
+})
 
+router.get('/score/:id', (req, res) => {
+    console.log("score");
+    console.log(req.params.id);
+    if (req.headers.token === 'abcd') {
+        return User.findOne({_id: req.params.id})
+        .then(user => {
+            console.log("USer " + user.tests);
+            Test.find().then(tests => {
+                console.log("Test " + tests._id);
+                res.json({
+                    score: tests.map(test => {
+                        let testScore = user.apiRepr().results[test._id];
+                        let scorePercentage = testScore ? ((testScore.answerRight / (testScore.answerRight + testScore.answerWrong)) * 100) + '%' : 'none';
+                        return {
+                            title: test.apiRepr().testTitle,
+                            score: scorePercentage,
+                            id: test.apiRepr()._id
+                        };
+                    })
+                });
+            });
+        });
+    } else {
+        res.json('Forbidden');
+    }
 })
 
 //PUT to update user with test info

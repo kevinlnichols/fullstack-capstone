@@ -90,7 +90,7 @@ router.get('/', (req, res) => {
 //POST to create new admin
 router.post('/admin/create', jsonParser, (req, res) => {
 
-    const requiredFields = ['username', 'password'];
+    const requiredFields = ['username', 'password', 'retypePassword'];
     const missingField = requiredFields.find(field => (!field in req.body));
 
     if (missingField) {
@@ -102,7 +102,7 @@ router.post('/admin/create', jsonParser, (req, res) => {
         });
     }
 
-    const stringFields = ['firstName', 'lastName', 'username', 'password'];
+    const stringFields = ['firstName', 'lastName', 'username', 'password', 'retypePassword'];
     const nonStringFields = stringFields.find(
         field => field in req.body && typeof req.body[field] !== 'string'
     );
@@ -159,7 +159,7 @@ router.post('/admin/create', jsonParser, (req, res) => {
         });
     };
 
-    let {username, password, firstName = '', lastName = ''} = req.body;
+    let {username, password, retypePassword, firstName = '', lastName = ''} = req.body;
     firstName = firstName.trim();
     lastName = lastName.trim();
 
@@ -185,7 +185,10 @@ router.post('/admin/create', jsonParser, (req, res) => {
             })
         })
         .then(user => {
-            return res.status(201).json(user.apiRepr());
+            return res.status(201).json({
+                token: adminToken,
+                adminId: user._id
+            });
         })
         .catch(err => {
             if (err.reason === 'ValidationError') {
@@ -198,7 +201,7 @@ router.post('/admin/create', jsonParser, (req, res) => {
 //POST to create new user
 router.post('/users/create', jsonParser, (req, res) => {
     
-        const requiredFields = ['username', 'password'];
+        const requiredFields = ['username', 'password', 'retypePassword'];
         const missingField = requiredFields.find(field => (!field in req.body));
     
         if (missingField) {
@@ -210,7 +213,7 @@ router.post('/users/create', jsonParser, (req, res) => {
             });
         }
     
-        const stringFields = ['firstName', 'lastName', 'username', 'password'];
+        const stringFields = ['firstName', 'lastName', 'username', 'password', 'retypePassword'];
         const nonStringFields = stringFields.find(
             field => field in req.body && typeof req.body[field] !== 'string'
         );
@@ -267,7 +270,7 @@ router.post('/users/create', jsonParser, (req, res) => {
             });
         };
     
-        let {username, password, firstName = '', lastName = ''} = req.body;
+        let {username, password, retypePassword, firstName = '', lastName = ''} = req.body;
         firstName = firstName.trim();
         lastName = lastName.trim();
     
@@ -289,7 +292,8 @@ router.post('/users/create', jsonParser, (req, res) => {
                     username,
                     password: hash,
                     name: {firstName, lastName},
-                    type: 'user'
+                    type: 'user',
+                    results: {}
                 })
             })
             .then(user => {

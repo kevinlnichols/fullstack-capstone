@@ -11,17 +11,11 @@ const userSchema = mongoose.Schema({
     },
     username: {type: String, required: true},
     password: {type: String, required: true},
-    results: {type: Object},
+    results: {type: Object, default: {}},
     type: {type: String, required: true}
 },
     {collection: 'user'}
 );
-
-/*
-{testId: hhhg778374844, answersWrong: 3. asnserCorrect: 11}
-
-user.results.push(testid, correctAnswe, wrong)*/ 
-
 
 
 userSchema.virtual('fullName').get(function() {

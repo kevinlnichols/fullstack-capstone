@@ -51,24 +51,24 @@ describe('user API resource', function() {
     });
 
     describe('DELETE endpoint', function () {
-        it('should delete a test by id', function () {
-          let test;
-          return Test
-            .findOne()
-            .then(function (_test) {
-              test = _test;
-              console.log(test._id);
-              return chai.request(app).delete(`/tests/list/delete/${test._id}`);
-            })
-            .then(function (res) {
-                console.log(test.id);
-              res.should.have.status(204);
-              return Test.findById(test.id);
-            })
-            .then(function (_test) {
-              should.not.exist(_test);
-            });
-        });
+      it('should delete a test by id', function () {
+        let test;
+        return Test
+          .findOne()
+          .then(function (_test) {
+            test = _test;
+            console.log(test._id);
+            return chai.request(app).delete(`/tests/list/delete/${test._id}`);
+          })
+          .then(function (res) {
+              console.log(test.id);
+            res.should.have.status(204);
+            return Test.findById(test.id);
+          })
+          .then(function (_test) {
+            should.not.exist(_test);
+          });
       });
+    });
     
 });

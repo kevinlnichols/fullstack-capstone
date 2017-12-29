@@ -149,6 +149,9 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
+
+.user-data {
+    margin-bottom: 40px;
 }
 
 .admin-login-fields > label, .admin-info > label, .user-login-fields > label, .user-data-inputs > label {
@@ -294,12 +297,10 @@ a {
     border: 1px solid black;
 }
 
-.user-name-photo, .user-page-instructions {
-    float: left;
-}
-
 .user-page-instructions {
-    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 3px;
@@ -317,8 +318,10 @@ a {
 }
 
 .test-table {
+    margin-left: auto;
+    margin-right: auto;
     border-collapse: collapse;
-    width: 100%;
+    width: 70%;
 }
 
 .test-list table, .test-list th, .test-list td {

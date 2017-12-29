@@ -24,29 +24,34 @@ const renderUserData = data => {
 };
 
 const renderTests = () => {
+    let token = localStorage.getItem('token');
+    let userId = localStorage.getItem('userId');
     $.ajax({
-        url: '/tests/list/',
+        url: `/users/score/${userId}`,
         type: 'get',
         contentType: 'application/json',
+        headers: {
+            token: token
+        },
         success: renderTestData
     });
 };
 
-
+let tests;
 const renderTestData = data => {
-    let tests = '';
-    for (i=0; i < data.length; i++) {
+    let tests = data;
+    console.log(data);
+    for (i=0; i < data.score.length; i++) {
         tests += `
         <tr class="user-test-info">
-            <td class="test-id" testid="${data[i]._id}">${data[i].testTitle}</td>
-            <td>Not Completed%</td>
+            <td class="test-id" testid="${data.score[i].id}">${data.score[i].title}</td>
+            <td>${data.score[i].score}</td>
         </tr>`;
     };
     $('.test-table').append(tests);
     $('.test-table td').on('click', function(event) {
         let testid = $(this).attr('testid');
         localStorage.setItem('testid', testid);
-        console.log("hello");
         window.location.href='/tests/test/';
     }); 
 };
@@ -59,8 +64,6 @@ const userLogout = () => {
         window.location.href='/authentication';
     });
 }
-
-
 
 function handleFunctions () {
     renderUserHome();

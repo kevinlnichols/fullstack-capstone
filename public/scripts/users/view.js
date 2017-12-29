@@ -14,7 +14,8 @@ const renderUserTable = (data) => {
         users += `
         <tr class="user-test-info">
             <td>${data[i].fullName}</td>
-            <td>100%</td>
+            <td>${data[i].username}</td>
+            <td>Will complete later.</td>
         </tr>`;
     };
     
