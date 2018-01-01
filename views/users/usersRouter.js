@@ -43,15 +43,12 @@ router.get('/list/:id', (req, res) => {
     }
 })
 
+//GET to display test score on user home page
 router.get('/score/:id', (req, res) => {
-    console.log("score");
-    console.log(req.params.id);
     if (req.headers.token === 'abcd') {
         return User.findOne({_id: req.params.id})
         .then(user => {
-            console.log("USer " + user.tests);
             Test.find().then(tests => {
-                console.log("Test " + tests._id);
                 res.json({
                     score: tests.map(test => {
                         let testScore = user.apiRepr().results[test._id];
@@ -97,8 +94,6 @@ router.put('/results', jsonParser, (req, res) => {
                 
             })
         })
-    
-    
 })
 
 

@@ -22,41 +22,6 @@ function tearDownDb() {
     });
 }
 
-function seedUserData() {
-    console.info('seeding user data');
-    const seedData = [];
-    for (let i = 1; i <= 10; i++) {
-      seedData.push({
-        fullName: {
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName()
-        },
-        username: faker.internet.userName(),
-        password: faker.lorem.words(),
-        type: faker.lorem.words()
-      });
-    }
-    return User.insertMany(seedData);
-}
-
-function seedQuestionData() {
-    console.info('seeding question data');
-    const seedData = [];
-    for (let i = 1; i <= 10; i++) {
-      seedData.push({
-        title: faker.lorem.sentence(),
-        answerChoices: {
-          choice1: faker.lorem.sentence(),
-          choice2: faker.lorem.sentence(),
-          choice3: faker.lorem.sentence(),
-          choice4: faker.lorem.sentence()
-        },
-        correctAnswer: faker.lorem.sentence(),
-      });
-    }
-    return Question.insertMany(seedData);
-}
-
 function seedTestData() {
     console.info('seeding test data');
     const seedData = [];
@@ -68,6 +33,22 @@ function seedTestData() {
     return Test.insertMany(seedData);
 }
 
+function seedUserData() {
+    console.info('seeding user data');
+    var seedData = [];
+    for (let i = 1; i <= 10; i++) {
+      seedData.push({
+        fullName: {
+          firstName: faker.name.firstName(),
+          lastName: faker.name.lastName()
+        },
+        username: faker.internet.userName(),
+        password: faker.lorem.words(),
+        type: 'user'
+      });
+    }
+    return User.insertMany(seedData);
+}
 
 describe('user API resource', function() {
     before(function() {
@@ -106,7 +87,6 @@ describe('user API resource', function() {
             return chai.request(app)
                 .get('/users/list')
                 .then(res => {
-                    console.log(res.body);
                     res.should.have.status(200);
                     res.should.be.json;
                     res.body.should.have.length.of.at.least(1);
@@ -125,7 +105,7 @@ describe('user API resource', function() {
         })
     });
 
-    describe('POST endpoint', function() {
+    /*describe('POST endpoint', function() {
         it('should add a new user', function() {
             const newUser = {
                 fullName: {
@@ -134,12 +114,14 @@ describe('user API resource', function() {
                 },
                 username: faker.internet.userName(),
                 password: faker.lorem.words(),
-                type: faker.lorem.words() 
+                type: 'user' 
             };
+            console.log(newUser);
             return chai.request(app)
                 .post('/authentication/users/create')
                 .send(newUser)
                 .then(function(res) {
+                    console.log(res.body);
                     res.should.have.status(201);
                     res.should.have.json;
                     res.body.should.be.a('object');
@@ -183,5 +165,46 @@ describe('user API resource', function() {
                 user.results.answerWrong.should.equal(updateData.results.answerWrong);
             });
         });
-    });
+    });*/
 });
+
+describe('user API resource', function() {
+    before(function() {
+        return runServer(TEST_DATABASE_URL);
+      });
+
+    beforeEach(function() {
+        return seedTestData();
+    });
+
+    afterEach(function() {
+        return tearDownDb();
+    });
+    
+    after(function() {
+    return closeServer();
+    });
+
+    describe('DELETE endpoint', function () {
+      it('should delete a test by id', function () {
+        let test;
+        return Test
+          .findOne()
+          .then(function (_test) {
+            test = _test;
+            console.log(test._id);
+            return chai.request(app).delete(`/tests/list/delete/${test._id}`);
+          })
+          .then(function (res) {
+              console.log(test.id);
+            res.should.have.status(204);
+            return Test.findById(test.id);
+          })
+          .then(function (_test) {
+            should.not.exist(_test);
+          });
+      });
+    });
+    
+});
+

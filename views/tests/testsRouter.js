@@ -67,7 +67,7 @@ router.delete('/list/delete/:testid', (req, res) => {
         if (err) {
             'Something went horribly wrong!'
         } else {
-            res.send(response);
+            res.status(204).send(response);
         }
     })
 });
