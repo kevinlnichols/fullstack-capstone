@@ -84,6 +84,10 @@ a {
     text-align: center;
 }
 
+.text-align {
+    text-align: center;
+}
+
 .admin-button-container {
     margin-top: 10px;
 }
@@ -159,6 +163,41 @@ a {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+.return-to-home {
+    color: white;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+    font-size: 14px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+.return-to-home-container {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.return-to-home-admin {
+    padding: 4px;
+    color: white;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+    font-size: 14px;
+    background-color: rgba(41, 40, 40, 0.5);
+    border-radius: 6px;
+    margin-top: 200px;
+    text-align: center;
+}
+
+.return-to-home-create-test {
+    padding: 4px;
+    color: white;
+    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
+    font-size: 14px;
+    background-color: rgba(41, 40, 40, 0.5);
+    border-radius: 6px;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .input-border {
     border: 1px solid black;
     margin-bottom: 10px;
@@ -185,6 +224,10 @@ a {
     margin-right: auto;
 }
 
+#create-test-page {
+    text-align: center;
+}
+
 /*Styling for the tests/view.html page*/
 
 .view-test-body {
@@ -207,6 +250,7 @@ a {
 
 .test-list-page {
     margin-top: 70px;
+    text-align: center;
 }
 
 .dropdown {
@@ -472,6 +516,118 @@ a {
     width: 50%;
     padding-bottom: 5px;
     padding-top: 5px;
+}
+
+@media screen and (max-width: 450px) {
+    .main-header > h1 {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 20px;
+    }
+
+    .signup-buttons-container {
+        margin-bottom: 280px;
+    }
+
+    .signup-buttons {
+        width: 100%;
+    }
+
+    .main-button {
+        display: block;
+        width: 80%;
+        margin-bottom: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .admin-login-fields, .signup-fields, .user-login-fields {
+        width: 80%;
+        margin-bottom: 320px;
+    }
+
+    .return-to-home {
+        font-size: 18px;
+    }
+
+    .login-signup-body {
+        margin-bottom: 300px;
+    }
+
+    .admin-welcome {
+        width: 80%;
+    }
+
+    .create-user-page {
+        width: 80%;
+    }
+
+    .return-to-home-create-test {
+        font-size: 18px;
+        margin-bottom: 300px;
+    }
+
+    .user-table {
+        width: 80%;
+    }
+
+    .create-test-page {
+        width: 90%;
+    }
+
+    .return-to-home-admin {
+        font-size: 18px;
+        margin-bottom: 300px;
+    }
+
+    .dropdown-select {
+        font-size: 16px;
+        width: 80%;
+        height: 40px;
+    }
+
+    .dropdown-select > option {
+        font-size: 16px;
+        width: 80%;
+    }
+
+    .delete-question {
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .user-page-instructions {
+        width: 80%;
+    }
+
+    .user-home-page {
+        margin-top: 40px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .test-table {
+        width: 80%;
+        margin-bottom: 400px;
+    }
+
+    .take-test-page {
+        margin-left: 0px;
+    }
+    
+    .test-question {
+        width: 80%;
+    }
+
+    .submit-test-button {
+        height: 40px;
+        font-size: 16px;
+        width: 80%;
+    }
+}
+    
+@media screen and (min-width: 1500px) {
+   
 }
 
 
