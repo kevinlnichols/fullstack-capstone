@@ -9,3 +9,8 @@ Select the "Sign Up" button to create an admin. After the admin is created, logi
 
 ## Admin Home Page
 
+![adminhome](https://user-images.githubusercontent.com/23110664/34546475-16f46c46-f0c2-11e7-8c52-f22b88879903.JPG)
+At the admin home page you can create users, and then create tests for the users to take. 
+
+## User Home Page
+
