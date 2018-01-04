@@ -29,7 +29,7 @@ const adminLogout = () => {
         event.preventDefault();
         console.log('Logging out');
         localStorage.clear();
-        window.location.href='/authentication';
+        window.location.href='/';
     });
 }
 

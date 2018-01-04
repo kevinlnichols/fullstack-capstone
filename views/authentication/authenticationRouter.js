@@ -84,7 +84,7 @@ router.post('/userLogin', jsonParser, (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 //POST to create new admin
