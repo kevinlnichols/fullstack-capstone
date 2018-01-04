@@ -18,15 +18,15 @@ At the admin home page you can create users, and then create tests for the users
 At the user home page you will see a list of tests created by an admin. Click on a test name to take the test. 
 
 ## Functionality
-  ..-Create users, admins, and tests
-  ..-Delete whole tests or individual questions
-  ..-View users with user information, and tests with correct answers as an admin
-  ..-Take tests as a user and view up-to-date scores
+  -  Create users, admins, and tests
+  -  Delete whole tests or individual questions
+  -  View users with user information, and tests with correct answers as an admin
+  -  Take tests as a user and view up-to-date scores
  
 ## Technology
-  ..-HTML, CSS, JavaScript, jQuery, AJAX
-  ..-Node.js, Express, Mocha, Chai, Mongo, Mongoose, bcryptjs, Passport
-  ..-Heroku, TravisCI, mLab
+  -  HTML, CSS, JavaScript, jQuery, AJAX
+  -  Node.js, Express, Mocha, Chai, Mongo, Mongoose, bcryptjs, Passport
+  -  Heroku, TravisCI, mLab
   
 ## Responive Design
 This app was designed to be responsive across multiple screens.
