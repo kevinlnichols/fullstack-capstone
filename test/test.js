@@ -38,7 +38,7 @@ function seedUserData() {
     var seedData = [];
     for (let i = 1; i <= 10; i++) {
       seedData.push({
-        fullName: {
+        name: {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName()
         },
@@ -105,13 +105,11 @@ describe('user API resource', function() {
         })
     });
 
-    /*describe('POST endpoint', function() {
+    describe('POST endpoint', function() {
         it('should add a new user', function() {
             const newUser = {
-                fullName: {
-                    firstName: faker.name.firstName(),
-                    lastName: faker.name.lastName()
-                },
+                firstName: faker.name.firstName(),
+                lastName: faker.name.lastName(),
                 username: faker.internet.userName(),
                 password: faker.lorem.words(),
                 type: 'user' 
@@ -126,46 +124,40 @@ describe('user API resource', function() {
                     res.should.have.json;
                     res.body.should.be.a('object');
                     res.body.should.include.keys('_id', 'fullName', 'username');
-                    res.body.fullName.should.equal(`${newUser.fullName.firstName} ${newUser.fullName.lastName}`);
+                    res.body.fullName.should.equal(`${newUser.firstName} ${newUser.lastName}`);
                     res.body._id.should.not.be.null;
                     res.body.username.should.equal(newUser.username);
                     return User.findById(res.body._id);
                 })
-                .then(function(user) {
-                    user.name.firstName.should.equal(newUser.name.firstName);
-                    user.name.lastName.should.equal(newUser.name.lastName);
-                    user.body.username.should.equal(newUser.username);
-                    user.body._id.should.equal(newUser._id);
-                });
         });
     });
 
     describe('PUT endpoint', function () {
         it('should update user with test results', function () {
             const updateData = {
-                results: {
-                    answerRight: 2,
-                    answerWrong: 3
-                }
+                testId: 'hello',
+                answerRight: 2,
+                answerWrong: 3
             };
             return User
             .findOne()
             .then(user => {
-                updateData._id = user._id;
+                updateData.userId = user._id;
                 return chai.request(app)
                 .put('/users/results')
                 .send(updateData);
             })
             .then(res => {
                 res.should.have.status(204);
-                return User.findById(updateData._id);
+                return User.findById(updateData.userId);
             })
             .then(user => {
-                user.results.answerRight.should.equal(updateData.results.answerRight);
-                user.results.answerWrong.should.equal(updateData.results.answerWrong);
+                console.log(user);
+                user.results[updateData.testId].answerRight.should.equal(updateData.answerRight);
+                user.results[updateData.testId].answerWrong.should.equal(updateData.answerWrong);
             });
         });
-    });*/
+    });
 });
 
 describe('user API resource', function() {

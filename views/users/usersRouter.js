@@ -90,7 +90,7 @@ router.put('/results', jsonParser, (req, res) => {
             user.results = currentUser.results;
             user.update({results: user.results})
             .then(user => {
-                res.status(200).json(user);
+                res.status(204).json(user);
                 
             })
         })
