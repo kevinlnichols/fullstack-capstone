@@ -72,20 +72,42 @@ const submitTest = () => {
 };
 
 const saveAndAddQuestion = () => {
-    let questionOne = new question({
-        title: $('#question-title').val(),
-        answerChoices: {
-            choice1: $('#choice1').val(),
-            choice2: $('#choice2').val(),
-            choice3: $('#choice3').val(),
-            choice4: $('#choice4').val()
-        },
-        correctAnswer: $('#correct-answer').val()
-    });
-    testData.questions.push(questionOne);
+    if ($('#choice1').val() !== '' && $('#choice2').val() !== '' && $('#choice3').val() !== '' && $('#choice4').val() !== '' && $('#question-title').val() !== '') {
+        let questionOne = new question({
+            title: $('#question-title').val(),
+            answerChoices: {
+                choice1: $('#choice1').val(),
+                choice2: $('#choice2').val(),
+                choice3: $('#choice3').val(),
+                choice4: $('#choice4').val()
+            },
+            correctAnswer: $('#correct-answer').val()
+        });
+        testData.questions.push(questionOne);
+    }
+    else {
+        alert('You cannot leave a field blank');
+    }
 };
 
+const verifyUser = () => {
+    const userId = localStorage.getItem('userId');
+    $.ajax({
+        url: '/authentication/verify',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({userId: userId}),
+        success: function(response) {
+            console.log(response)
+        },
+        error: function() {
+            window.location = '/authentication/adminLogin';
+        }
+    });
+}
+
 function handleFunctions () {
+    verifyUser();
     addQuestion();
     submitTest();
 

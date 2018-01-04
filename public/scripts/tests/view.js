@@ -88,7 +88,24 @@ const deleteQuestion = () => {
     });
 }
 
+const verifyUser = () => {
+    const userId = localStorage.getItem('userId');
+    $.ajax({
+        url: '/authentication/verify',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({userId: userId}),
+        success: function(response) {
+            console.log(response)
+        },
+        error: function() {
+            window.location = '/authentication/adminLogin';
+        }
+    });
+}
+
 function handleFunctions () {
+    verifyUser();
     viewTests();
 };
 

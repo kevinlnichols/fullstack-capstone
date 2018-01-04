@@ -1,6 +1,5 @@
 $('.user-data-inputs').submit((event) => {
     event.preventDefault();
-
     let data = {
         firstName: $('.user-first-name').val(),
         lastName: $('.user-last-name').val(),
@@ -29,3 +28,25 @@ $('.user-data-inputs').submit((event) => {
         }
     });
 });
+
+const verifyUser = () => {
+    const userId = localStorage.getItem('userId');
+    $.ajax({
+        url: '/authentication/verify',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({userId: userId}),
+        success: function(response) {
+            console.log(response)
+        },
+        error: function() {
+            window.location = '/authentication/adminLogin';
+        }
+    });
+}
+
+function handleFunctions () {
+    verifyUser();
+};
+
+$(handleFunctions);

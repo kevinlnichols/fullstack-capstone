@@ -1,5 +1,5 @@
 const renderAdminHome = () => {
-    let adminId = localStorage.getItem('adminId');
+    let adminId = localStorage.getItem('userId');
     let adminToken = localStorage.getItem('token');
     $.ajax({
         url: `/tests/admin/${adminId}`,
@@ -33,7 +33,24 @@ const adminLogout = () => {
     });
 }
 
+const verifyUser = () => {
+    const userId = localStorage.getItem('userId');
+    $.ajax({
+        url: '/authentication/verify',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify({userId: userId}),
+        success: function(response) {
+            console.log(response)
+        },
+        error: function() {
+            window.location = '/authentication/adminLogin';
+        }
+    });
+}
+
 function handleFunctions () {
+    verifyUser();
     renderAdminHome();
 };
 

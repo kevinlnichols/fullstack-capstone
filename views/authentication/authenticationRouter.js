@@ -198,6 +198,30 @@ router.post('/admin/create', jsonParser, (req, res) => {
         });
 });
 
+router.post('/verify', jsonParser, (req, res) => {
+    return User.findOne({type: 'admin', _id: req.body.userId})
+    .then(user => {
+        if (user) {
+            res.status(200).end();
+        }
+        else {
+            res.status(403).json("Forbidden");
+        }
+     })
+})
+
+router.post('/verifyUser', jsonParser, (req, res) => {
+    return User.findOne({type: 'user', _id: req.body.userId})
+    .then(user => {
+        if (user) {
+            res.status(200).end();
+        }
+        else {
+            res.status(403).json("Forbidden");
+        }
+     })
+})
+
 //POST to create new user
 router.post('/users/create', jsonParser, (req, res) => {
     

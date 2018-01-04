@@ -27,7 +27,8 @@ userSchema.methods.apiRepr = function () {
         _id: this._id,
         fullName: this.fullName || '',
         username: this.username || '',
-        results: this.results
+        results: this.results,
+        type: this.type
     };
 };
 
