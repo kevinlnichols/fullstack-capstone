@@ -1,6 +1,6 @@
 # Test Creator
 
-Sign up as an admin to create user profiles and tests. Then assign the user profiles to people and have them take the tests. 
+Thinkful Node Capstone - Sign up as an admin to create user profiles and tests. Then assign the user profiles to people and have them take the tests. 
 
 ## Landing Page
 
@@ -14,3 +14,22 @@ At the admin home page you can create users, and then create tests for the users
 
 ## User Home Page
 
+![userhome](https://user-images.githubusercontent.com/23110664/34546647-34d3a442-f0c3-11e7-8e36-4dd21b297589.JPG)
+At the user home page you will see a list of tests created by an admin. Click on a test name to take the test. 
+
+## Functionality
+  -Create users, admins, and tests
+  -Delete whole tests or individual questions
+  -View users with user information, and tests with correct answers as an admin
+  -Take tests as a user and view up-to-date scores
+ 
+## Technology
+  -HTML, CSS, JavaScript, jQuery, AJAX
+  -Node.js, Express, Mocha, Chai, Mongo, Mongoose, bcryptjs, Passport
+  -Heroku, TravisCI, mLab
+  
+## Responive Design
+This app was designed to be responsive across multiple screens.
+
+## Prototype
+http://desolate-reaches-36425.herokuapp.com/users/home
