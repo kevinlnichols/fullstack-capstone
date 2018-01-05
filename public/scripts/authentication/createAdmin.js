@@ -1,6 +1,5 @@
 $('.admin-info').submit((event) => {
     event.preventDefault();
-    console.log('sending data');
     let data = {
         firstName: $('#admin-first-name').val(),
         lastName: $('#admin-last-name').val(),
@@ -30,9 +29,6 @@ $('.admin-info').submit((event) => {
 });
 
 const loginVerified = data => {
-    console.log('Loading');
-    console.log(data.token);
-    console.log(data.adminId);
     localStorage.setItem('token', data.token);
     localStorage.setItem('userId', data.adminId);
     window.location.href = '/tests';

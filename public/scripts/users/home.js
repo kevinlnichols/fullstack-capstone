@@ -40,7 +40,6 @@ const renderTests = () => {
 let tests;
 const renderTestData = data => {
     let tests = data;
-    console.log(data);
     for (i=0; i < data.score.length; i++) {
         tests += `
         <tr class="user-test-info">
@@ -59,7 +58,6 @@ const renderTestData = data => {
 const userLogout = () => {
     $('.user-logout').on('submit', function(event) {
         event.preventDefault();
-        console.log('Logging out');
         localStorage.clear();
         window.location.href='/';
     });

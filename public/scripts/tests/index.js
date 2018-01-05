@@ -27,7 +27,6 @@ const renderAdminData = data => {
 const adminLogout = () => {
     $('.admin-logout').on('submit', function(event) {
         event.preventDefault();
-        console.log('Logging out');
         localStorage.clear();
         window.location.href='/';
     });

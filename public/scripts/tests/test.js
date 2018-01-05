@@ -14,7 +14,6 @@ const renderTestData = (data) => {
     let choices = (choices) => {
         let choicesGroup = '';
         for(choice in choices) {
-            console.log(choices[choice]);
             choicesGroup += `<option aria-label="${choices[choice]}">${choices[choice]}</option>` 
         }
         return choicesGroup;
@@ -40,8 +39,6 @@ const submitTest = (data) => {
         let answerWrong = 0;
         let answerRight = 0;
         $('.question-select').each(function(item) {
-            console.log($(this).attr('data-id'));
-            console.log($(this).val());
             if ($(this).val() === data.questions[$(this).attr('data-id')].correctAnswer) {
                 answerRight++;
             } else {

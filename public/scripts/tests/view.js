@@ -6,7 +6,6 @@ const viewTests = () => {
         success: function(data) {
                 let options = '';
                 for (i=0; i < data.length; i++) {
-                    console.log(data[i]);
                     options += `<option aria-label="${data[i].testTitle}" value="${data[i]._id}">${data[i].testTitle}</option>`;
                 };
                 $('#dropdown-menu').append(options);
@@ -60,7 +59,6 @@ const deleteTest = () => {
     $('.delete-test').on('click', function(event) {
         event.preventDefault();
         let testid = $(this).attr('data-testid');
-        console.log(testid);
         $.ajax({
             url: `/tests/list/delete/${testid}`,
             type: 'delete',
@@ -77,7 +75,6 @@ const deleteQuestion = () => {
         event.preventDefault();
         let testid = $(this).attr('data-testid');
         let questionid = $(this).attr('data-questionid');
-        console.log(testid, questionid);
         $.ajax({
             url: `/tests/list/delete/${testid}/${questionid}`,
             type: 'delete',

@@ -19,8 +19,7 @@ const renderUserTable = (data) => {
         </tr>`;
     };
     
-    $('.user-table').append(users);
-    console.log(data);    
+    $('.user-table').append(users);  
 }
 
 const verifyUser = () => {

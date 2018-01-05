@@ -58,7 +58,6 @@ const submitTest = () => {
         event.preventDefault();
         testData.testTitle = $('#quiz-title').val();
         saveAndAddQuestion();
-        console.log(testData);
         $.ajax({
             url: '/tests/create',
             type: 'post',
