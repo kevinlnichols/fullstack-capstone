@@ -58,30 +58,36 @@ const getTestFromApi = () => {
 const deleteTest = () => {
     $('.delete-test').on('click', function(event) {
         event.preventDefault();
-        let testid = $(this).attr('data-testid');
-        $.ajax({
-            url: `/tests/list/delete/${testid}`,
-            type: 'delete',
-            success: function(data) {
-                window.location.reload(true);
-                viewTests();
-            }
-        });
+        const result = confirm("Are you sure?");
+        if (result) {
+            let testid = $(this).attr('data-testid');
+            $.ajax({
+                url: `/tests/list/delete/${testid}`,
+                type: 'delete',
+                success: function(data) {
+                    window.location.reload(true);
+                    viewTests();
+                }
+            });
+        }
     })
 }
 
 const deleteQuestion = () => {
     $('.delete-question').on('click', function(event) {
         event.preventDefault();
-        let testid = $(this).attr('data-testid');
-        let questionid = $(this).attr('data-questionid');
-        $.ajax({
-            url: `/tests/list/delete/${testid}/${questionid}`,
-            type: 'delete',
-            success: function(data) {
-                getTestFromApi();
-            }
-        });
+        const result = confirm("Are you sure?");
+        if (result) {
+            let testid = $(this).attr('data-testid');
+            let questionid = $(this).attr('data-questionid');
+            $.ajax({
+                url: `/tests/list/delete/${testid}/${questionid}`,
+                type: 'delete',
+                success: function(data) {
+                    getTestFromApi();
+                }
+            });
+        }
     });
 }
 

@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body class="create-user-body">
-
+    <header role="banner" class="main-header">
+        <h1>Test Creator</h1>
+    </header>
     <section role="region" class="create-user-page" id="create-user-page">
         <div class="user-data-container" id="user-data-container">
             <div class="user-data">
@@ -24,14 +26,12 @@
                     <input aria-labelledby="user-password" class="user-password input-border" type="password" required>
                     <label for="retype-password">Retype Password: <span id="match-error"></span></label>
                     <input aria-labelledby="retype-password" type="password" class="input-border" name="retype-password" id="retype-password" required>
-                    <button class="admin-button" id="submit-user-button" type="submit">Submit User Data</button>
+                    <div class="login-return">
+                        <button class="admin-button" id="submit-user-button" type="submit">Submit</button>
+                        <a href="/tests"><p class="return-to-home">Return to homepage</p></a>
+                    </div>
                 </form>
             </div>
-        </div>
-    </section>
-    <section class="text-align" role="region">
-        <div class="return-to-home-container">
-            <a href="/tests"><p class="return-to-home-create-test">Return to homepage?</p></a>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

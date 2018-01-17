@@ -11,6 +11,9 @@
 <body class="user-admin-submit-body">
     
     <section role="region" class="signup-page" id="signup-page">
+        <header role="banner" class="main-header">
+            <h1>Test Creator</h1>
+        </header>
         <div class="signup-fields-container">
             <div class="signup-fields">
                 <form class="admin-info">
@@ -24,8 +27,10 @@
                     <input aria-labelledby="password" class="admin-password input-border" type="password" name="admin-password" id="admin-password" required>
                     <label for="retype-password">Retype Password: <span id="match-error"></span></label>
                     <input aria-labelledby="retype-password" type="password" class="input-border" name="retype-password" id="retype-password" required>
-                    <button class="admin-button">Submit</button>
-                    <a href="/"><p class="return-to-home">Return to homepage?</p></a>
+                    <div class="login-return">
+                        <button class="admin-button">Submit</button>
+                        <a href="/"><p class="return-to-home">Return to homepage</p></a>
+                    </div>
                 </form>
                 
             </div>

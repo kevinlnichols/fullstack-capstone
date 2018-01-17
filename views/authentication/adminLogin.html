@@ -11,14 +11,19 @@
 <body class="user-admin-submit-body">
 
     <section role="region" class="admin-login-page" id="admin-login-page">
+        <header role="banner" class="main-header">
+            <h1>Test Creator</h1>
+        </header>
         <div class="admin-login-container">
             <form class="admin-login-fields">
                 <label for="id" id="admin-id">Admin Username: </label>
                 <input placeholder="Trial Admin: knichols" aria-labelledby="admin-id" class="admin-id input-border" type="text">
                 <label for="password" id="admin-password">Admin Password: </label>
                 <input placeholder="Trial Password: 1234567890" aria-labelledby="admin-password" class="admin-password input-border" type="password">
-                <button class="admin-button">Login</button>
-                <a href="/"><p class="return-to-home">Return to homepage?</p></a>
+                <div class="login-return">
+                    <button class="admin-button">Login</button>
+                    <a href="/"><p class="return-to-home">Return to homepage</p></a>
+                </div>
             </form>
         </div>
     </section>  

@@ -20,16 +20,36 @@ body {
     margin-right: auto;
 }
 
+.instructions-view-user {
+    font-size: 26px;
+    width: 40%;
+    background-color: rgba(247, 240, 240, 0.71);
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.instructions > p {
+    padding: 4px;
+}
+
 .logout-button {
     border: 1px solid #0C0C0C;
     border-radius: 1px;
     padding: 5px;
     background-color: #F8F8FF;
     text-decoration: none;
+    float: right;
+    clear: both;
 }
 
 .logout-button:hover {
     box-shadow: 2px 2px 2px;
+}
+
+.admin-logout, .user-logout {
+    overflow: hidden;
 }
 
 
@@ -47,32 +67,50 @@ a {
 }
 
 .main-header > h1 {
-    font-size: 60px;
+    text-align: center;
+    font-size: 90px;
     color: #FFFAFA;
     padding-bottom: 5px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-bottom: -1px;
+}
+
+.main-header-small > h1 {
+    text-align: center;
+    font-size: 50px;
+    color: #FFFAFA;
+    padding-bottom: 5px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    margin-bottom: -1px;
+}
+
+.user-login-page > .main-header, .signup-page > .main-header, .admin-login-page > .main-header {
+    margin-bottom: 10px;
 }
 
 .create-test-page > h1 {
-    color: #FFFAFA;
+    color: #050505;
     margin-bottom: 10px;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    text-shadow: -0.5px 0 #EBE9E9, 0 0.5px#EBE9E9, 0.5px 0#EBE9E9, 0 -0.5px#EBE9E9;
 }
 
 .create-test-page {
-    background: rgba(16, 19, 199, 0.75);
+    background-color: rgba(247, 240, 240, 0.5);
     padding: 30px;
-    border-radius: 1px;
-    border: 2px solid black;
+    border-radius: 2px;
+    border: 0.5px solid #7A7979;
 }
 
 .main-button {
+    display: inline-block;
     border: 1px solid #181212;
     border-radius: 1px;
     box-shadow: 1px 1px 1px;
     margin: 4px;
-    padding: 6px;
+    padding: 8px;
     background: #F8F8FF;
+    width: 110px;
+    height: 40px;
 }
 
 .main-button:hover {
@@ -89,17 +127,18 @@ a {
 }
 
 .admin-button-container {
-    margin-top: 10px;
+    margin-top: 1px;
 }
 
 .admin-button {
     font-weight: bold;
     border: 1px solid black;
     border-radius: 1px;
-    width: 100%;
+    width: 90px;
+    height: 40px;
     padding: 2px;
-    margin-top: 15px;
-    background-color: rgb(247, 240, 240);
+    margin-top: 1px;
+    background: #F8F8FF;
     text-decoration: none;
 }
 
@@ -107,12 +146,13 @@ a {
     font-weight: bold;
     border: 1px solid black;
     border-radius: 1px;
-    width: 100%;
+    width: 110px;
+    height: 40px;
     padding: 2px;
-    margin-top: 10px;
-    background-color: rgb(247, 240, 240);
+    margin-top: 1px;
+    margin-bottom: 15px;
+    background: #F8F8FF;
     text-decoration: none;
-    box-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .admin-button:hover {
@@ -127,11 +167,15 @@ a {
     display: inline-block;
 }
 
-.admin-login-container, .signup-fields-container, .user-login-container, .user-data-container {
+.admin-login-container, .signup-fields-container, .user-login-container,  {
     margin-top: 100px;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
+}
+
+.user-data-container {
+    margin-top: 50px;
 }
 
 .admin-login-fields > input, label {
@@ -145,10 +189,10 @@ a {
 }
 
 .admin-login-fields, .signup-fields, .user-login-fields {
-    background: rgba(16, 19, 199, 0.75);
+    background-color: rgba(247, 240, 240, 0.5);
     padding: 30px;
-    border-radius: 1px;
-    border: 2px solid black;
+    border-radius: 2px;
+    border: 0.5px solid #817F7F;
     width: 40%;
     margin-left: auto;
     margin-right: auto;
@@ -159,16 +203,38 @@ a {
 }
 
 .admin-login-fields > label, .admin-info > label, .user-login-fields > label, .user-data-inputs > label {
-    color: #FFFAFA;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 20px;
+    color: #161616;
+    text-shadow: -0.5px 0 #F3EBEB, 0 0.5px #F3EBEB, 0.5px 0 #F3EBEB, 0 -0.5px #F3EBEB;
+    
+}
+
+.admin-login-fields > input, .admin-info > input, .user-login-fields > input, .user-data-inputs > input {
+    padding: 5px;
 }
 
 .return-to-home {
-    color: white;
-    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
-    font-size: 14px;
-    margin-top: 3px;
-    margin-bottom: 5px;
+    border: 1px solid #181212;
+    border-radius: 1px;
+    padding: 8px;
+    background: #F8F8FF;
+    width: 90px;
+    height: 40px;
+    margin-top: 1px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    vertical-align: center;
+}
+
+a > .return-to-home {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.return-to-home:hover {
+    box-shadow: 2px 2px 2px;
 }
 
 .return-to-home-container {
@@ -176,33 +242,90 @@ a {
     margin: 0 auto;
 }
 
+.login-return > a, .login-return > button {
+    display: inline-block;
+}
+
+.login-return-view {
+    margin: auto;
+    margin-top: 20px;
+    float: right;
+}
+
+.return-to-home-view {
+    border: 1px solid #181212;
+    border-radius: 1px;
+    padding: 1px;
+    background: #F8F8FF;
+    width: 110px;
+    height: 40px;
+    margin-top: 1px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    vertical-align: center;
+}
+
+a > .return-to-home-view {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+
 .return-to-home-admin {
-    padding: 4px;
-    color: white;
-    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
-    font-size: 14px;
-    background-color: rgba(41, 40, 40, 0.5);
-    border-radius: 6px;
+    border: 1px solid #181212;
+    border-radius: 1px;
+    padding: 8px;
+    background: #F8F8FF;
+    width: 90px;
+    height: 40px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    vertical-align: center;
     margin-top: 200px;
     text-align: center;
 }
 
-.return-to-home-create-test {
-    padding: 4px;
-    color: white;
-    text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
-    font-size: 14px;
-    background-color: rgba(41, 40, 40, 0.5);
-    border-radius: 6px;
-    margin-top: 10px;
+a > .return-to-home-admin {
+    font-size: 12px;
     text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.return-to-home-create-test {
+    border: 1px solid #181212;
+    border-radius: 1px;
+    padding: 8px;
+    background: #F8F8FF;
+    width: 90px;
+    height: 40px;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    vertical-align: center;
+}
+
+.return-to-home-create-test:hover {
+    box-shadow: 1px 1px 1px;
+}
+
+a > .return-to-home-create-test {
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.return-to-home-admin:hover {
+    box-shadow: 1px 1px 1px;       
 }
 
 .input-border {
     border: 1px solid black;
     margin-bottom: 10px;
     box-sizing: border-box;
-    padding: 2px;
+    padding: 4px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -215,10 +338,11 @@ a {
 
 .quiz-title {
     margin-bottom: 30px;
+    padding: 8px;
 }
 
 .create-test-page {
-    width: 40%;
+    width: 50%;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -249,7 +373,7 @@ a {
 }
 
 .test-list-page {
-    margin-top: 70px;
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -262,31 +386,53 @@ a {
 }
 
 .view-test-title > h1 {
+    font-size: 30px;
     color: #FFFAFA;
     margin-bottom: 10px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .question {
+    background-color: rgba(247, 240, 240, 0.5);
+    border: 0.5px solid #817F7F;
     float: left;
     padding-left: 2%;
     padding-right: 2%;
     margin: 15px;
-    background: rgba(116, 117, 197, 0.85);
     border-radius: 4px;
     display: table-cell;
 }
 
-.delete-question {
-    font-weight: bold;
-    border: 1px solid black;
-    border-radius: 1px;
-    width: 100%;
-    padding: 2px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    background-color: rgb(247, 240, 240);
+.delete-test {
     text-decoration: none;
+    border: 1px solid #181212;
+    border-radius: 1px;
+    margin: 4px;
+    margin-bottom: 20px;
+    padding: 6px;
+    background: #F8F8FF;
+    width: 110px;
+    height: 40px;
+}
+
+.delete-test:hover {
+    box-shadow: 1px 1px 1px; 
+}
+
+.delete-question {
+    text-decoration: none;
+    border: 1px solid #181212;
+    border-radius: 1px;
+    margin: 4px;
+    margin-bottom: 20px;
+    padding: 6px;
+    background: #F8F8FF;
+    width: 110px;
+    height: 40px;
+}
+
+.delete-question:hover {
+    box-shadow: 1px 1px 1px;    
 }
 
 .view-test {
@@ -308,9 +454,9 @@ a {
 
 .user-name {
     margin-top: 20px;
-    font-size: 30px;
-    color: black;
-    text-shadow: -1px 0 #FFFAFA, 0 1px #FFFAFA, 1px 0 #FFFAFA, 0 -1px #FFFAFA;
+    font-size: 38px;
+    color: #FFFAFA;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .user-welcome, .user-page-instructions {
@@ -318,9 +464,9 @@ a {
 }
 
 .user-page-instructions > h2 {
-    font-size: 20px;
-    color: #FFFAFA;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 23px;
+    color: black;
+    text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
 }
 
 .user-home-page-container {
@@ -328,7 +474,7 @@ a {
 }    
 
 .user-home-page {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-left: 60px;
     margin-right: 60px;
 }
@@ -344,12 +490,12 @@ a {
 .user-page-instructions {
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 80%;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 3px;
-    background: rgba(58, 73, 155, 0.9);
-    border: 1px solid black;
+    background-color: rgba(247, 240, 240, 0.5);
+    border: 0.5px solid #817F7F;
 }
 
 .photo-and-instructions {
@@ -366,6 +512,10 @@ a {
     margin-right: auto;
     border-collapse: collapse;
     width: 70%;
+}
+
+.test-list {
+    margin-bottom: 30px;
 }
 
 .test-list table, .test-list th, .test-list td {
@@ -386,7 +536,7 @@ a {
 }
 
 .test-list th {
-    background-color: #C791C3;
+    background-color: rgba(138, 136, 138, 0.86);
 }
 
 /* Styling for the view users page in the admin area */
@@ -398,7 +548,7 @@ a {
 }
 
 .user-view-page {
-    margin-top: 100px;
+    margin-top: 40px;
     margin-left: 60px;
     margin-right: 60px;
 }
@@ -426,7 +576,7 @@ a {
 }
 
 .user-info th {
-    background-color: #C791C3;
+    background-color: rgba(138, 136, 138, 0.86);
 }
 
 /* Create user page */
@@ -438,10 +588,11 @@ a {
 }
 
 .create-user-page {
-    background: rgba(16, 19, 199, 0.75);
-    padding: 30px;
-    border-radius: 1px;
-    border: 2px solid black;
+    background-color: rgba(247, 240, 240, 0.5);
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 2px;
+    border: 0.5px solid #817F7F;
     width: 40%;
     margin-left: auto;
     margin-right: auto;
@@ -460,22 +611,22 @@ a {
 }
 
 .take-test-page {
-    margin-top: 100px;
-    margin-left: 60px;
+   margin: auto;
 }
 
 .take-test-title > h1 {
+    font-size: 25px;
     color: #030303;
     margin-bottom: 10px;
-    text-shadow: -1px 0 #FFFFFF, 0 1px #FFFFFF, 1px 0 #FFFFFF, 0 -1px #FFFFFF;
+    text-shadow: -0.5px 0 #FFFFFF, 0 0.5px #FFFFFF, 1px 0 #FFFFFF, 0 -0.5px #FFFFFF;
     text-align: center;
 }
 
 .test-question {
-    background: rgba(114, 31, 170, 0.75);
-    padding: 5px;
-    border-radius: 3px;
-    border: 1px solid black;
+    background-color: rgba(247, 240, 240, 0.5);
+    padding: 3px;
+    border-radius: 2px;
+    border: 0.5px solid #817F7F;;
     width: 50%;
     margin-bottom: 10px;
     margin-left: auto;
@@ -488,6 +639,7 @@ a {
     padding-right: 5px;
     width: 50%;
     height: 25px;
+    margin-bottom: 10px;
 }
 
 .submit-test-button {
@@ -496,15 +648,20 @@ a {
     font-weight: bold;
     border: 1px solid black;
     border-radius: 1px;
-    width: 50%;
+    width: 90px;
+    height: 40px;
     padding: 2px;
-    background-color: rgb(247, 240, 240);
+    background: #F8F8FF;
     text-decoration: none;
     text-align: center;
 }
 
+.submit-test-button:hover {
+    box-shadow: 1px 1px 1px;
+}
+
 .admin-welcome {
-    font-size: 18px;
+    font-size: 24px;
     color: #FFFAFA;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     background-color: rgba(61, 58, 58, 0.5);
@@ -512,7 +669,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 50%;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -594,6 +751,7 @@ a {
     .delete-question {
         height: 40px;
         font-size: 16px;
+        padding: 2px;
     }
 
     .user-page-instructions {

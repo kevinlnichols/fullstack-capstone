@@ -18,7 +18,7 @@ const renderUserData = data => {
             <input type="submit" value="Logout" id="logout" class="logout-button">
         </form>`;
     let name = `<h1 class="user-welcome">Hello ${data.fullName}</h1>`;
-    $('.user-header').html(logout);
+    $('.user-logout').html(logout);
     $('.user-name').html(name);
     userLogout();
 };
