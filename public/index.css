@@ -37,7 +37,7 @@ body {
 .logout-button {
     border: 1px solid #0C0C0C;
     border-radius: 1px;
-    padding: 5px;
+    padding: 5px 15px;
     background-color: #F8F8FF;
     text-decoration: none;
     float: right;
@@ -77,11 +77,14 @@ a {
 
 .main-header-small > h1 {
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     color: #FFFAFA;
     padding-bottom: 5px;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    margin-bottom: -1px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    float: left;
+    clear: both;
 }
 
 .user-login-page > .main-header, .signup-page > .main-header, .admin-login-page > .main-header {
@@ -243,8 +246,14 @@ a > .return-to-home {
 }
 
 .login-return > a, .login-return > button {
-    display: inline-block;
+    display: block;
+    float: left;
 }
+
+.login-return {
+    overflow: hidden;
+}
+
 
 .login-return-view {
     margin: auto;
@@ -270,6 +279,7 @@ a > .return-to-home-view {
     text-align: center;
     font-weight: bold;
     padding: 3px;
+    margin: auto
 }
 
 .return-to-home-admin {
