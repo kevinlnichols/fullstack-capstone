@@ -28,7 +28,7 @@ At the user home page you will see a list of tests created by an admin. Click on
   -  Node.js, Express, Mocha, Chai, Mongo, Mongoose, bcryptjs, Passport
   -  Heroku, TravisCI, mLab
   
-## Responive Design
+## Responsive Design
 This app was designed to be responsive across multiple screens.
 
 ## Prototype
